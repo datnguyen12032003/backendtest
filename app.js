@@ -19,7 +19,7 @@ var RevenueRouter = require("./routes/RevenueRouter");
 var CommentRouter = require("./routes/CommentRouter");
 
 //connect database
-const connect = require("./Loaders/DBConnect");
+const connect = require("./loaders/DBConnect");
 
 //comment out the following line to use the local database
 var app = express();
