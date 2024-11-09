@@ -23,4 +23,6 @@ const EntryHistorySchema = new Schema({
   },
 });
 
-module.exports = mongoose.models.EntryHistory || mongoose.model("EntryHistory", EntryHistorySchema);
+module.exports =
+  mongoose.models.EntryHistory ||
+  mongoose.model("EntryHistory", EntryHistorySchema);

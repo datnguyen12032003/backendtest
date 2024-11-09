@@ -95,4 +95,4 @@ const RoomSchema = new Schema({
   comments: [CommentSchema],
 });
 
-module.exports = mongoose.model("Room", RoomSchema);
+module.exports = mongoose.models.Room || mongoose.model("Room", RoomSchema);
