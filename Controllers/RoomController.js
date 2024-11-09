@@ -1,4 +1,4 @@
-const Room = require("../models/Room");
+const Room = require("../Models/Room");
 const EntryHistory = require("../models/entryHistory");
 
 exports.sortAll = async (req, res) => {
