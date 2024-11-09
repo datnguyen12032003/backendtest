@@ -1,8 +1,8 @@
 const Payment = require("../Models/Payment");
-const Room = require("../models/Room");
+const Room = require("../Models/Room");
 const User = require("../Models/User");
 const config = require("../Configuration/config");
-const payOS = require("../Configuration/payOS");
+const payOS = require("../Configuration/payos");
 const EntryHistory = require("../Models/EntryHistory");
 
 exports.createPaymentV2 = async (req, res) => {
