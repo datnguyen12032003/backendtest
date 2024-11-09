@@ -1,6 +1,6 @@
 const { payment } = require("paypal-rest-sdk");
 const Payment = require("../Models/Payment");
-const Room = require("../models/Room");
+const Room = require("../Models/Room");
 const User = require("../Models/User");
 
 //tổng doanh thu

@@ -1,5 +1,5 @@
 const Favorite = require("../Models/Favorite");
-const Room = require("../models/Room");
+const Room = require("../Models/Room");
 const User = require("../Models/User");
 
 exports.addFavorite = async (req, res) => {

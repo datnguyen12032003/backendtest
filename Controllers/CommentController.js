@@ -1,5 +1,5 @@
-const Room = require("../models/Room");
-const EntryHistory = require("../models/entryHistory");
+const Room = require("../Models/Room");
+const EntryHistory = require("../Models/EntryHistory");
 const Payment = require("../Models/Payment");
 
 exports.getAllComments = async (req, res) => {
@@ -9,28 +9,32 @@ exports.getAllComments = async (req, res) => {
       "comments.user_id",
       "username _id avatarUrl fullName"
     );
-    
+
     if (!room) {
       return res.status(404).json({ message: "Room not found" });
     }
-    
+
     // Logging the populated room details
     console.log("Room Data:", JSON.stringify(room, null, 2));
-    
+
     // Logging the comments with populated user details
-    room.comments.forEach(comment => {
-      console.log("User Full Name:", comment.user_id.fullName || "No full name available");
-      console.log("Avatar URL:", comment.user_id.avatarUrl || "No avatar available");
+    room.comments.forEach((comment) => {
+      console.log(
+        "User Full Name:",
+        comment.user_id.fullName || "No full name available"
+      );
+      console.log(
+        "Avatar URL:",
+        comment.user_id.avatarUrl || "No avatar available"
+      );
     });
-    
+
     res.status(200).json(room);
   } catch (error) {
     console.error("Error getting all comments:", error);
     res.status(500).json({ message: "Internal server error" });
   }
 };
-
-
 
 exports.addComment = async (req, res) => {
   const roomId = req.params.roomId;
@@ -53,17 +57,20 @@ exports.addComment = async (req, res) => {
         "username _id"
       );
       // Check if the user has already commented
-    const hasCommented = room.comments.some((comment) => {
-      // Check if user_id is an object (populated) or a string and compare accordingly
-      return (
-        (comment.user_id._id && comment.user_id._id.toString() === userId.toString()) ||
-        (comment.user_id && comment.user_id.toString() === userId.toString())
-      );
-    });
+      const hasCommented = room.comments.some((comment) => {
+        // Check if user_id is an object (populated) or a string and compare accordingly
+        return (
+          (comment.user_id._id &&
+            comment.user_id._id.toString() === userId.toString()) ||
+          (comment.user_id && comment.user_id.toString() === userId.toString())
+        );
+      });
 
-    if (hasCommented) {
-      return res.status(404).json({ message: "You can only comment on this room one time" });
-    }
+      if (hasCommented) {
+        return res
+          .status(404)
+          .json({ message: "You can only comment on this room one time" });
+      }
 
       if (!room) {
         return res.status(404).json({ message: "Room not found" });
